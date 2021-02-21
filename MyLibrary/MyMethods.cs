@@ -21,11 +21,12 @@ namespace MyLibrary
             return d.ToString(CultureInfo.InvariantCulture);
         }
 
-        public static void Menu(Dictionary<string, Action> methods, string menuText, string exit = "q")
+        public static void Menu(Dictionary<string, Action> methods, string menuText, string exit = "q", string author = "Кузьминых Юрий")
         {
             string input;
             do
             {
+                Console.WriteLine($"Автор программы - {author}");
                 Console.WriteLine("Выберите подпрограмму:");
                 Console.WriteLine(menuText);
                 Console.WriteLine($"{exit} - выход");
@@ -35,6 +36,22 @@ namespace MyLibrary
                     methods[input].Invoke();
                 }
             } while (input != exit);
+        }
+
+        public static void Swap<T>(ref T a, ref T b)
+        {
+            T t = a;
+            a = b;
+            b = t;
+        }
+
+        public static void WriteArray<T>(T[] array)
+        {
+            foreach (T variable in array)
+            {
+               Console.Write($"{variable} "); 
+            }
+            Console.WriteLine();
         }
     }
 }
